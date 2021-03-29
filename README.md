@@ -1,7 +1,7 @@
 被迫营业日志内容，陆续更新。
 
 ## writer
-- $\color{blue}{luyiming}$
+- luyiming
 
 ## Visitor
 ### Usually
@@ -9,3 +9,10 @@
 - LightingUZ
 ### Sometimes 
 - mx
+
+
+目前进展：
+
+## Done
+- 被迫营业6
+- 被迫营业11
