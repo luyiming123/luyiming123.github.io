@@ -1,0 +1,127 @@
+# ============================================================
+#  Yiming Lu 的个人博客 —— Hugo 站点配置
+#  主题：PaperMod  |  部署：GitHub Pages (GitHub Actions)
+#  日常写作只需要在 content/posts/ 下新建 .md 文件
+# ============================================================
+
+baseURL = "https://YmingLu.github.io/"
+title = "Yiming Lu的博客"
+theme = "PaperMod"
+
+defaultContentLanguage = "zh"
+hasCJKLanguage = true          # 让「字数 / 阅读时间」按中文字符统计
+enableEmoji = true             # 支持 :smile: 这类 emoji 简写
+enableRobotsTXT = true
+paginate = 8
+
+summaryLength = 70            # 列表页摘要长度（按词计）
+pluralizeListTitles = false
+
+# 让 sitemap / rss 带上完整内容，便于搜索引擎与阅读器
+[sitemap]
+  changefreq = "weekly"
+  priority = 0.5
+  filename = "sitemap.xml"
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]   # JSON 供 PaperMod 站内搜索使用
+
+# ---------------- 导航菜单 ----------------
+# 想改菜单名字/顺序，改这里；weight 越小越靠左
+[[menu.main]]
+  name = "文章"
+  url = "/posts/"
+  weight = 10
+
+[[menu.main]]
+  name = "归档"
+  url = "/archives/"
+  weight = 20
+
+[[menu.main]]
+  name = "标签"
+  url = "/tags/"
+  weight = 30
+
+[[menu.main]]
+  name = "搜索"
+  url = "/search/"
+  weight = 40
+
+[[menu.main]]
+  name = "关于"
+  url = "/about/"
+  weight = 50
+
+# ---------------- 站点级参数 ----------------
+[params]
+  env = "production"
+  description = "计算机科学的理论，与我在大学里的日常。"
+  author = "Yiming Lu"
+
+  defaultTheme = "auto"          # 跟随系统深浅色；可填 light / dark
+  disableThemeToggle = false
+
+  ShowReadingTime = true
+  ShowWordCount = true
+  ShowShareButtons = false
+  ShowCodeCopyButtons = true
+  ShowBreadCrumbs = true
+  ShowPostNavLinks = true        # 文章底部「上一篇 / 下一篇」
+  ShowToc = true                 # 文章右侧目录（文章内可单独关闭）
+  TocOpen = false
+  comments = false               # 暂未接入评论系统，接入后可改 true
+
+  # 首页顶部的一段自我介绍
+  [params.homeInfoParams]
+    Title = "你好，我是 Yiming Lu 👋"
+    Content = """
+这里记录两类东西：**计算机科学理论**（算法、计算复杂性、逻辑、形式化方法），
+以及**大学生活**里那些真实的想法、踩过的坑和走过的路。
+
+内容会一直保持粗糙但诚实 —— 边学边写，边写边改。"""
+
+  # 社交链接图标（键名见 PaperMod 文档，如 github/twitter/email/zhihu…）
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/YmingLu"
+
+  [[params.socialIcons]]
+    name = "rss"
+    url = "/index.xml"
+
+  # 页脚（hideCopyright = true 可隐藏版权行）
+  [params.footer]
+    hideCopyright = false
+    text = "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) · 由 GitHub Actions 自动构建"
+
+  # 站点图标（文件放在 static/ 下；找不到的文件只会产生无害的 404）
+  [params.assets]
+    favicon = "favicon.svg"
+    favicon16x16 = "favicon-16x16.png"
+    favicon32x32 = "favicon-32x32.png"
+    apple_touch_icon = "apple-touch-icon.png"
+    theme_color = "#2e2e33"
+    msapplication_TileColor = "#2e2e33"
+    disableHLJS = false            # 使用 Hugo 内置 Chroma 高亮
+
+# ---------------- Markdown / 代码高亮 ----------------
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true              # 允许 Markdown 里直接写 HTML
+  [markup.highlight]
+    noClasses = false
+    codeFences = true
+    guessSyntax = true
+    lineNos = false
+    lineNumbersInTable = false
+    tabWidth = 4
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 4
+    ordered = false
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
