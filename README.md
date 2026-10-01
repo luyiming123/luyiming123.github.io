@@ -21,7 +21,9 @@ blog/
 ├─ i18n/                        # （已移除自定义文案，中文界面用主题内置翻译）
 ├─ layouts/
 │  ├─ _markup/render-passthrough.html   # 数学公式渲染钩子（KaTeX）
-│  └─ partials/extend_head.html         # 含公式的页面才加载 KaTeX 样式
+│  ├─ partials/extend_head.html         # 含公式的页面才加载 KaTeX 样式
+│  └─ partials/toc.html                 # 覆盖主题目录模板，使标题里的公式在目录中正常显示
+├─ assets/css/extended/toc-math.css     # 目录里公式的样式（隐藏 MathML 副本）
 ├─ themes/PaperMod/             # 主题（已直接提交，无需 submodule）
 ├─ static/                      # 原样拷贝到站点根目录的文件
 │  ├─ katex/                    # 公式样式与字体（自托管，不依赖境外 CDN）
@@ -142,6 +144,11 @@ $$ A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}, \qquad
 3. **样式按需加载**：只有含公式的页面才引入 `static/katex/`（约 1 MB），其他页面零开销。
 
 想要预览效果，`content/posts/math-test.md` 是一篇公式示例（`draft: true`，不发布）。
+
+**标题里也能写公式**（例如 `### 4.3 $L^p$ 收敛定理`），目录会一并渲染。
+主题原版会把目录里的公式拆散，因此本站覆盖了 `layouts/partials/toc.html`：
+它保留标题的渲染结果，公式隐藏的 MathML 副本由 `assets/css/extended/toc-math.css` 隐藏。
+换主题版本时记得对比主题的 `_partials/toc.html`，差异只有两行（已加注释标注）。
 
 ## 四、发布上线
 

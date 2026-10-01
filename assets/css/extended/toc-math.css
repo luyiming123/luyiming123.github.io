@@ -1,0 +1,31 @@
+/* 目录里的数学公式：隐藏 KaTeX 的 MathML 副本，只显示可见的渲染结果。
+   （PaperMod 的目录链接现在直接输出标题 HTML，因此需要与正文一致的隐藏规则。）
+   浏览器不支持 MathML 时保留副本，保证公式至少能被读出。 */
+.toc .katex-mathml {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+
+@media not all and (min-resolution: 0.001dpcm) {
+  .toc .katex-mathml {
+    clip: auto;
+    height: auto;
+    width: auto;
+    overflow: visible;
+  }
+}
+
+/* 目录里的公式略小于正文，避免层级混乱 */
+.toc .katex {
+  font-size: 1em;
+}
+
+/* 去掉 KaTeX 为正文块级公式准备的外边距，目录里不需要 */
+.toc .katex-display {
+  margin: 0;
+}
