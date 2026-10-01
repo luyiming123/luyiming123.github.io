@@ -1,4 +1,4 @@
-# 新建文章骨架：.\scripts\new-post.ps1 "文章标题" -Tags "算法,笔记"
+﻿# 新建文章骨架：.\scripts\new-post.ps1 "文章标题" -Tags "算法,笔记"
 param(
   [Parameter(Mandatory = $true, Position = 0)]
   [string]$Title,

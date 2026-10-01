@@ -41,6 +41,11 @@ cd blog
 .\scripts\serve.ps1          # 打开 http://localhost:1313/
 ```
 
+> **报「禁止运行脚本」怎么办**：Windows 默认执行策略是 `Restricted`。两个办法，任选其一：
+> - 临时绕过：`powershell -ExecutionPolicy Bypass -File .\scripts\serve.ps1`
+> - 一次性放行（推荐，之后所有本地脚本都能直接跑）：
+>   `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`
+
 脚本会优先用系统里的 `hugo`，找不到就回退到 `blog\tools\hugo.exe`（会自动下载）。
 想连草稿一起看，脚本已经带了 `--buildDrafts`。
 

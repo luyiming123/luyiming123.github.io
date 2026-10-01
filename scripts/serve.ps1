@@ -1,4 +1,4 @@
-# 本地预览：.\scripts\serve.ps1
+﻿# 本地预览：.\scripts\serve.ps1
 # 优先使用系统安装的 hugo；找不到时回退到 blog\tools\hugo.exe（不存在则自动下载）
 $ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path)

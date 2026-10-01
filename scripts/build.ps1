@@ -1,4 +1,4 @@
-# 本地构建（不启动服务器）：.\scripts\build.ps1
+﻿# 本地构建（不启动服务器）：.\scripts\build.ps1
 # 优先使用系统安装的 hugo；找不到时回退到 blog\tools\hugo.exe（不存在则自动下载）
 $ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path)
