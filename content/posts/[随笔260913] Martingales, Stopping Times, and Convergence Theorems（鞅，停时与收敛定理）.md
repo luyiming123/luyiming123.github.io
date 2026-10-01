@@ -1,3 +1,12 @@
+---
+title: "[随笔260913] Martingales, Stopping Times, and Convergence Theorems（鞅，停时与收敛定理）"
+date: 2026-10-02
+draft: false
+summary: "test"
+tags: ["随笔"]["数学"]
+categories: ["随笔"]["数学"]
+ShowToc: true
+---
 手伤了，直接用 AI 了。
 ## 1. 滤子、条件期望与鞅的定义
 
