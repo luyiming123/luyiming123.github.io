@@ -72,14 +72,9 @@ pluralizeListTitles = false
   TocOpen = false
   comments = false               # 暂未接入评论系统，接入后可改 true
 
-  # 首页顶部的一段自我介绍
+  # 首页顶部标题（想加回一段介绍就补 Content = """..."""）
   [params.homeInfoParams]
     Title = "你好，我是 Yiming Lu 👋"
-    Content = """
-这里记录两类东西：**计算机科学理论**（算法、计算复杂性、逻辑、形式化方法），
-以及**大学生活**里那些真实的想法、踩过的坑和走过的路。
-
-内容会一直保持粗糙但诚实 —— 边学边写，边写边改。"""
 
   # 社交链接图标（键名见 PaperMod 文档，如 github/twitter/email/zhihu…）
   [[params.socialIcons]]
