@@ -1,0 +1,10 @@
+{{- /*
+  覆盖 PaperMod 的 head 扩展点：只在页面含数学公式时引入 KaTeX 样式表。
+
+  文件位于 static/katex/（katex.min.css + fonts/），字体用相对路径引用，
+  因此必须整目录原样发布，不能走 Hugo 的 assets 指纹化流程（指纹化会改路径）。
+*/ -}}
+
+{{- if .Page.Store.Get "hasMath" -}}
+  <link rel="stylesheet" href="{{ "katex/katex.min.css" | relURL }}">
+{{- end -}}

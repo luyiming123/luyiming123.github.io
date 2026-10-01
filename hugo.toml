@@ -105,11 +105,19 @@ pluralizeListTitles = false
     msapplication_TileColor = "#2e2e33"
     disableHLJS = false            # 使用 Hugo 内置 Chroma 高亮
 
-# ---------------- Markdown / 代码高亮 ----------------
+# ---------------- Markdown / 代码高亮 / 数学 ----------------
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true              # 允许 Markdown 里直接写 HTML
+
+    # 数学公式：把 $...$、$$...$$、\(...\)、\[...\] 原样交给数学渲染器
+    [markup.goldmark.extensions.passthrough]
+      enable = true
+      [markup.goldmark.extensions.passthrough.delimiters]
+        block = [['$$', '$$'], ['\[', '\]']]
+        inline = [['$', '$'], ['\(', '\)']]
+
   [markup.highlight]
     noClasses = false
     codeFences = true

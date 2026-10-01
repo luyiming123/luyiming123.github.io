@@ -13,22 +13,26 @@ blog/
 ├─ hugo.toml                    # 全站配置：标题、菜单、PaperMod 参数
 ├─ content/
 │  ├─ posts/                    # ★ 所有文章写在这里
-│  │  ├─ hello-world.md
-│  │  ├─ what-is-theory-cs.md
-│  │  └─ five-mistakes-freshman-year.md
+│  │  ├─ _index.md              # 「文章」栏目页（勿删，删了 /posts/ 会 404）
+│  │  └─ math-test.md           # 公式示例（draft: true，不发布）
 │  ├─ about.md                  # 「关于」页面
 │  ├─ archives.md               # 「归档」页面
 │  └─ search.md                 # 「搜索」页面
-├─ i18n/zh.yaml                 # 中文界面文案（可自行改词）
+├─ i18n/                        # （已移除自定义文案，中文界面用主题内置翻译）
+├─ layouts/
+│  ├─ _markup/render-passthrough.html   # 数学公式渲染钩子（KaTeX）
+│  └─ partials/extend_head.html         # 含公式的页面才加载 KaTeX 样式
 ├─ themes/PaperMod/             # 主题（已直接提交，无需 submodule）
-├─ static/                      # 原样拷贝到站点根目录的文件（图片、CNAME 等）
+├─ static/                      # 原样拷贝到站点根目录的文件
+│  ├─ katex/                    # 公式样式与字体（自托管，不依赖境外 CDN）
+│  └─ favicon*                  # 站点图标
 ├─ scripts/                     # 本地预览 / 新建文章的小脚本
 └─ .github/workflows/hugo.yml   # 自动部署工作流
 ```
 
 ## 二、本地预览
 
-已下载 Hugo 到 `blog/tools/hugo.exe`（若不存在，脚本会自动下载）。
+本机已用 winget 装好 Hugo extended 0.167（若换机器，重装命令：`winget install Hugo.Hugo.Extended`）。
 
 **Windows：**
 
@@ -36,6 +40,9 @@ blog/
 cd blog
 .\scripts\serve.ps1          # 打开 http://localhost:1313/
 ```
+
+脚本会优先用系统里的 `hugo`，找不到就回退到 `blog\tools\hugo.exe`（会自动下载）。
+想连草稿一起看，脚本已经带了 `--buildDrafts`。
 
 **macOS / Linux：**
 
@@ -86,6 +93,39 @@ $$ \mathrm{P} \neq \mathrm{NP} $$
 | `cover.image: "/images/x.jpg"` | 添加封面图（图片放 `static/images/`） |
 | `hidemeta: true` | 隐藏日期/作者等信息 |
 | `weight` | 归档排序用（一般不用管） |
+
+## 三·五、数学公式（LaTeX / KaTeX）
+
+已配好，**构建时渲染**（Hugo 内置 KaTeX 引擎），页面不需要加载任何 JS。
+
+| 写法 | 效果 |
+| --- | --- |
+| `$O(n \log n)$` | 行内公式 $O(n \log n)$ |
+| `\(a^2 + b^2\)` | 行内公式（等价写法） |
+| `$$ ... $$` | 独立成行、居中的公式 |
+| `\[ ... \]` | 独立公式（等价写法） |
+
+多行对齐、矩阵、求和、概率等复杂写法都支持：
+
+```latex
+$$
+\begin{aligned}
+T(n) &= 2T(n/2) + O(n) \\
+     &= O(n \log n)
+\end{aligned}
+$$
+
+$$ A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}, \qquad
+   \Pr[X \ge t] \le \exp\left(-\frac{2t^2}{n}\right) $$
+```
+
+**三个注意点**
+
+1. **美元符号要转义**：正文里写钱数用 `\$100`，否则 `$100 和 $200` 之间会被当成公式。
+2. **公式写错会让构建失败**：GitHub Actions 会变红叉，日志里给出具体位置（好处是不会把错公式发出去）。
+3. **样式按需加载**：只有含公式的页面才引入 `static/katex/`（约 1 MB），其他页面零开销。
+
+想要预览效果，`content/posts/math-test.md` 是一篇公式示例（`draft: true`，不发布）。
 
 ## 四、发布上线
 
