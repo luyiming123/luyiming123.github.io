@@ -34,32 +34,43 @@ blog/
 
 本机已用 winget 装好 Hugo extended 0.167（若换机器，重装命令：`winget install Hugo.Hugo.Extended`）。
 
-**Windows：**
+**Windows（推荐，最简单）：**
+
+在资源管理器里进入 `blog\scripts\`，**双击 `serve.cmd`**；或在命令行执行：
 
 ```powershell
 cd blog
-.\scripts\serve.ps1          # 打开 http://localhost:1313/
+.\scripts\serve.cmd          # 打开 http://localhost:1313/
 ```
 
-> **报「禁止运行脚本」怎么办**：Windows 默认执行策略是 `Restricted`。两个办法，任选其一：
-> - 临时绕过：`powershell -ExecutionPolicy Bypass -File .\scripts\serve.ps1`
-> - 一次性放行（推荐，之后所有本地脚本都能直接跑）：
->   `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`
+`.cmd` 直接调用 `hugo.exe`，**不受 PowerShell 执行策略限制**，也不需要任何配置。
 
-脚本会优先用系统里的 `hugo`，找不到就回退到 `blog\tools\hugo.exe`（会自动下载）。
-想连草稿一起看，脚本已经带了 `--buildDrafts`。
+只想构建不预览，双击 `scripts\build.cmd`（产物在 `public\`）。
+
+<details>
+<summary>也可以直接用 PowerShell 脚本（需要先放行执行策略）</summary>
+
+这台机器的执行策略是 `Restricted`，且系统层面会拦截未签名脚本，因此 `.ps1` 需要用 Bypass 方式运行：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\serve.ps1
+powershell -ExecutionPolicy Bypass -File .\scripts\build.ps1
+powershell -ExecutionPolicy Bypass -File .\scripts\new-post.ps1 "文章标题"
+```
+
+换一台普通 Windows 机器的话，一次性放行即可直接运行：
+`Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`
+
+</details>
+
+脚本会优先用系统里的 `hugo`（winget 装在 `%LOCALAPPDATA%\Microsoft\WinGet\Links`），
+找不到就回退到 `blog\tools\hugo.exe`。预览已带 `--buildDrafts`，草稿也能看到。
 
 **macOS / Linux：**
 
 ```bash
 cd blog
 ./scripts/serve.sh
-```
-
-只想构建不预览：
-
-```powershell
-.\scripts\build.ps1          # 产物在 public/
 ```
 
 ## 三、写一篇新文章
