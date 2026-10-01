@@ -3,8 +3,8 @@ title: "[随笔260913] Martingales, Stopping Times, and Convergence Theorems（�
 date: 2026-10-02
 draft: false
 summary: "test"
-tags: ["随笔"]["数学"]
-categories: ["随笔"]["数学"]
+tags: ["随笔","数学"]
+categories: ["随笔","数学"]
 ShowToc: true
 ---
 手伤了，直接用 AI 了。
