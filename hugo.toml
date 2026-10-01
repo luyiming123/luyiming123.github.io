@@ -4,7 +4,7 @@
 #  日常写作只需要在 content/posts/ 下新建 .md 文件
 # ============================================================
 
-baseURL = "https://YmingLu.github.io/"
+baseURL = "https://luyiming123.github.io/"
 title = "Yiming Lu的博客"
 theme = "PaperMod"
 
@@ -84,7 +84,7 @@ pluralizeListTitles = false
   # 社交链接图标（键名见 PaperMod 文档，如 github/twitter/email/zhihu…）
   [[params.socialIcons]]
     name = "github"
-    url = "https://github.com/YmingLu"
+    url = "https://github.com/luyiming123"
 
   [[params.socialIcons]]
     name = "rss"

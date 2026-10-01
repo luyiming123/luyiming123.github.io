@@ -45,4 +45,4 @@ ShowToc: true
 2. 把《算法导论》式的笔记整理成可检索的系列
 3. 尝试用 Lean 4 形式化一些本科水平的定理，并记录过程
 
-如果你碰巧读到了某篇文章并发现了错误，欢迎到 [GitHub](https://github.com/YmingLu) 开 issue 指正 —— 这是我写博客的另一个重要原因。
+如果你碰巧读到了某篇文章并发现了错误，欢迎到 [GitHub](https://github.com/luyiming123) 开 issue 指正 —— 这是我写博客的另一个重要原因。

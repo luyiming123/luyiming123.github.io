@@ -2,7 +2,7 @@
 
 基于 **Hugo + PaperMod** 的静态个人博客，推送到 `main` 分支后由 **GitHub Actions** 自动构建并发布到 **GitHub Pages**。
 
-线上地址：<https://YmingLu.github.io/>
+线上地址：<https://luyiming123.github.io/>
 
 ---
 
@@ -101,15 +101,15 @@ git push
 ## 五、首次部署前必须做的三件事
 
 1. **确认用户名和仓库名**
-   `hugo.toml` 里的 `baseURL` 目前是 `https://YmingLu.github.io/`。
-   若你的用户名不是 `YmingLu`，把它改成 `https://<你的用户名>.github.io/`。
+   `hugo.toml` 里的 `baseURL` 是 `https://luyiming123.github.io/`。
+   若换了 GitHub 账号，改成 `https://<你的用户名>.github.io/`。
 
 2. **创建仓库**
-   在 GitHub 新建仓库 `YmingLu.github.io`（**必须**是这个名字，才能作为用户主页站点），
+   在 GitHub 新建仓库 `luyiming123.github.io`（**必须**是这个名字，才能作为用户主页站点），
    然后：
 
    ```bash
-   git remote add origin https://github.com/YmingLu/YmingLu.github.io.git
+   git remote add origin git@github.com:luyiming123/luyiming123.github.io.git
    git branch -M main
    git push -u origin main
    ```
@@ -119,7 +119,7 @@ git push
    （不要选 "Deploy from a branch"。）
 
 > 如果你不想用 `用户名.github.io` 这个名字，也可以建任意仓库名（例如 `blog`），
-> 此时站点地址是 `https://YmingLu.github.io/blog/`，并把 `baseURL` 同步改成该地址。
+> 此时站点地址是 `https://luyiming123.github.io/blog/`，并把 `baseURL` 同步改成该地址。
 
 ## 六、常见自定义
 
@@ -143,7 +143,7 @@ PaperMod 支持 giscus / utterances。以 giscus 为例，在 `hugo.toml` 增加
   comments = true
 
 [params.giscus]
-  repo = "YmingLu/YmingLu.github.io"
+  repo = "luyiming123/luyiming123.github.io"
   repoId = "你的 repo id"
   category = "Announcements"
   categoryId = "你的 category id"

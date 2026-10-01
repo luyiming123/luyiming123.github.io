@@ -23,8 +23,8 @@ ShowPostNavLinks: false
 
 ## 联系我
 
-- GitHub：[@YmingLu](https://github.com/YmingLu)
-- 文章有错？欢迎在 [GitHub Issues](https://github.com/YmingLu/YmingLu.github.io/issues) 里指出
+- GitHub：[@luyiming123](https://github.com/luyiming123)
+- 文章有错？欢迎在 [GitHub Issues](https://github.com/luyiming123/luyiming123.github.io/issues) 里指出
 
 ## 关于本站
 
