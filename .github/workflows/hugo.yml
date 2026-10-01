@@ -26,7 +26,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: 0.167.0
+      # 与本地预览所用版本保持一致（主题 PaperMod 要求 >= 0.146.0）
+      HUGO_VERSION: 0.165.0
       HUGO_ENVIRONMENT: production
     steps:
       - name: 检出仓库（含主题）
@@ -47,7 +48,7 @@ jobs:
 
       - name: 构建站点
         run: |
-          hugo build \
+          hugo \
             --gc \
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
